@@ -7,14 +7,12 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.INTEGER,
-        field: 'post_id',
       },
 
       categoryId: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.STRING,
-        field: 'category_id',
       },
     });
   },
