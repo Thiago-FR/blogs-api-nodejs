@@ -18,7 +18,14 @@ const findOne = async (params) => {
   return user;
 };
 
+const createUser = async (params) => {
+  const user = await User.create(params);
+
+  return user;
+};
+
 module.exports = {
   findAll,
   findOne,
+  createUser,
 };

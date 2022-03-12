@@ -2,9 +2,10 @@ const Joi = require('joi');
 
 const validateJoi = (email, password) => {
   const { error } = Joi.object({
-    email: Joi.string().required().messages({
+    email: Joi.string().email().required().messages({
       'any.required': '400|"email" is required',
       'string.empty': '400|"email" is not allowed to be empty',
+      'string.email': '400|"email" must be a valid email',
     }),
     password: Joi.string().required().messages({
       'any.required': '400|"password" is required',
