@@ -3,6 +3,12 @@ const config = require('../config/config.js');
 const Service = require('../services/BlogPost.services');
 const ServicePostCategories = require('../services/PostsCategorie.services');
 
+const findAll = async (_req, res, _next) => {
+  const post = await Service.findAll();
+  
+  res.status(200).json(post);
+};
+
 const createPost = async (req, res, next) => {
   const sequelize = new Sequelize(config.development);
   const t = await sequelize.transaction();
@@ -25,5 +31,6 @@ const createPost = async (req, res, next) => {
 };
 
 module.exports = {
+  findAll,
   createPost,
 };

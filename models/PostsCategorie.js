@@ -7,21 +7,21 @@ const attributes = {
 
 module.exports = (sequelize) => {
   const PostsCategorie = sequelize.define('PostsCategorie', attributes,
-  { timestamps: false, tableName: 'PostsCategories', underscored: false });
+  { timestamps: false, tableName: 'PostsCategories' });
 
   PostsCategorie.associate = (models) => {
     models.BlogPost.belongsToMany(models.Categorie, {
       as: 'categories',
       through: PostsCategorie,
-      foreignKey: 'id',
-      otherKey: 'id',
+      foreignKey: 'postId',
+      otherKey: 'categoryId',
     });
   
     models.Categorie.belongsToMany(models.BlogPost, {
       as: 'posts',
       through: PostsCategorie,
-      foreignKey: 'id',
-      otherKey: 'id',
+      foreignKey: 'categoryId',
+      otherKey: 'postId',
     });
   };
 

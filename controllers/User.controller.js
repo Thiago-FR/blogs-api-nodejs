@@ -7,7 +7,7 @@ const payloadToken = (data) => ({
   email: data.email,    
 });
 
-const findAll = async (req, res, _next) => {
+const findAll = async (_req, res, _next) => {
   const user = await Service.findAll();
   
   res.status(200).json(user);
