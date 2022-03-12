@@ -6,6 +6,21 @@ const findAll = async () => {
   return user;
 };
 
+const findByPk = async (id) => {
+  const user = await User.findByPk(id);
+
+  if (!user) {
+    return {
+      statusCode: {
+        code: 404,
+        message: 'User does not exist',
+      },
+    };
+  }
+
+  return user;
+};
+
 const findOne = async (params) => {
   const user = await User.findOne({ where: params });
 
@@ -27,5 +42,6 @@ const createUser = async (params) => {
 module.exports = {
   findAll,
   findOne,
+  findByPk,
   createUser,
 };

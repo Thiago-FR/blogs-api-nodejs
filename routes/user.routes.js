@@ -7,6 +7,7 @@ const Schemas = require('../schemas');
 const router = express.Router();
 
 router.get('/', rescue(Controller.findAll));
-router.post('/', Schemas.joiCreate, Middleware.validateEmail, Controller.createUser);
+router.get('/:id', rescue(Controller.findByPk));
+router.post('/', Schemas.joiCreate, Middleware.validateEmail, rescue(Controller.createUser));
 
 module.exports = router;

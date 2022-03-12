@@ -26,6 +26,26 @@ const findAll = async (req, res, next) => {
   res.status(200).json(user);
 };
 
+const findByPk = async (req, res, next) => {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    return next({ statusCode: { code: 401, message: 'Token not found' } });
+  }
+
+  const decoded = jwt.verify(authorization, JWT_SECRET);
+
+  req.user = decoded;
+
+  const { id } = req.params;
+
+  const user = await Service.findByPk(id);
+
+  if (user.statusCode) return next(user);
+  
+  res.status(200).json(user);
+};
+
 const createUser = async (req, res) => {
   const { displayName, email, password, image } = req.body;
 
@@ -40,5 +60,6 @@ const createUser = async (req, res) => {
 
 module.exports = {
   findAll,
+  findByPk,
   createUser,
 };
