@@ -19,6 +19,17 @@ const findOne = async (req, res, next) => {
   res.status(200).json(user);
 };
 
+const updatePost = async (req, res, _next) => {
+  const { id } = req.params;
+  const { title, content } = req.body;
+
+  await Service.updatePost({ title, content }, { id });
+
+  const user = await Service.findOne(id);
+
+  res.status(200).json({ title, content, userId: req.user.id, categories: user.categories });
+};
+
 const createPost = async (req, res, next) => {
   const sequelize = new Sequelize(config.development);
   const t = await sequelize.transaction();
@@ -43,5 +54,6 @@ const createPost = async (req, res, next) => {
 module.exports = {
   findAll,
   findOne,
+  updatePost,
   createPost,
 };

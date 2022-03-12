@@ -32,6 +32,10 @@ const findOne = async (id) => {
   return post;
 };
 
+const updatePost = async (params, id) => {
+  await BlogPost.update(params, { where: id });
+};
+
 const createPost = async (params, t) => {
   const post = await BlogPost.create(params, { transaction: t });
 
@@ -41,5 +45,6 @@ const createPost = async (params, t) => {
 module.exports = {
   findAll,
   findOne,
+  updatePost,
   createPost,
 };
