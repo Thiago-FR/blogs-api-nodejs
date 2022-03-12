@@ -5,6 +5,7 @@ const Schemas = require('../schemas');
 
 const router = express.Router();
 
+router.get('/:id', rescue(Controller.findOne));
 router.get('/', rescue(Controller.findAll));
 router.post('/', Schemas.joiCreatePost, rescue(Controller.createPost));
 
