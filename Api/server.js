@@ -8,6 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/login', Schemas.joiLogin, router.loginRoutes);
+app.use(Middleware.auth);
 app.use('/user', router.userRoutes);
 app.use('/categories', router.categoriesRoutes);
 app.use('/post', router.blogPostRoutes);

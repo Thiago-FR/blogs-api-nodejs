@@ -12,12 +12,5 @@ module.exports = (err, _req, res, _next) => {
     return res.status(code).json({ message });
   }
 
-  if (err.name) {
-    console.log(err.name);
-    return res.status(401).json(
-      { message: err.message === 'jwt malformed' ? 'Expired or invalid token' : err.message },
-    );
-  }
-
   return res.status(500).json({ message: err.message });
 };

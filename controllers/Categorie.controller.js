@@ -1,35 +1,12 @@
-const jwt = require('jsonwebtoken');
 const Service = require('../services/Categories.services');
 
-const { JWT_SECRET } = process.env;
-
-const findAll = async (req, res, next) => {
-  const { authorization } = req.headers;
-
-  if (!authorization) {
-    return next({ statusCode: { code: 401, message: 'Token not found' } });
-  }
-
-  const decoded = jwt.verify(authorization, JWT_SECRET);
-
-  req.user = decoded;
-
+const findAll = async (req, res, _next) => {
   const user = await Service.findAll();
   
   res.status(200).json(user);
 };
 
-const createCategorie = async (req, res, next) => {
-  const { authorization } = req.headers;
-
-  if (!authorization) {
-    return next({ statusCode: { code: 401, message: 'Token not found' } });
-  }
-
-  const decoded = jwt.verify(authorization, JWT_SECRET);
-
-  req.user = decoded;
-
+const createCategorie = async (req, res, _next) => {
   const { name } = req.body;
 
   const categorie = await Service.createCategorie({ name });
