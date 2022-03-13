@@ -3,6 +3,14 @@ const config = require('../config/config.js');
 const Service = require('../services/BlogPost.services');
 const ServicePostCategories = require('../services/PostsCategorie.services');
 
+const getSearch = async (req, res, _next) => {
+  const { q } = req.query;
+
+  const post = await Service.getSearch(q);
+
+  res.status(200).json(post);
+};
+
 const findAll = async (_req, res, _next) => {
   const post = await Service.findAll();
   
@@ -62,6 +70,7 @@ const createPost = async (req, res, next) => {
 };
 
 module.exports = {
+  getSearch,
   findAll,
   findOne,
   updatePost,

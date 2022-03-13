@@ -6,6 +6,7 @@ const Middleware = require('../middleware');
 
 const router = express.Router();
 
+router.get('/search', rescue(Controller.getSearch));
 router.get('/:id', rescue(Controller.findOne));
 router.get('/', rescue(Controller.findAll));
 router.post('/', Schemas.joiCreatePost, rescue(Controller.createPost));
