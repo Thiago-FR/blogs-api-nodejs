@@ -33,6 +33,12 @@ const findOne = async (params) => {
   return user;
 };
 
+const deleteUser = async (id) => {
+  const post = await User.destroy({ where: id });
+
+  return post;
+};
+
 const createUser = async (params) => {
   const user = await User.create(params);
 
@@ -43,5 +49,6 @@ module.exports = {
   findAll,
   findOne,
   findByPk,
+  deleteUser,
   createUser,
 };

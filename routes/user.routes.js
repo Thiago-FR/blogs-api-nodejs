@@ -12,5 +12,6 @@ router.use(Middleware.auth);
 
 router.get('/:id', rescue(Controller.findByPk));
 router.get('/', rescue(Controller.findAll));
+router.delete('/me', rescue(Controller.deleteUser));
 
 module.exports = router;

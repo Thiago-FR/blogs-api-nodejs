@@ -23,6 +23,12 @@ const findByPk = async (req, res, next) => {
   res.status(200).json(user);
 };
 
+const deleteUser = async (req, res, _next) => {
+  await Service.deleteUser({ id: req.user.id });
+
+  res.status(204).end();
+};
+
 const createUser = async (req, res) => {
   const { displayName, email, password, image } = req.body;
 
@@ -38,5 +44,6 @@ const createUser = async (req, res) => {
 module.exports = {
   findAll,
   findByPk,
+  deleteUser,
   createUser,
 };
