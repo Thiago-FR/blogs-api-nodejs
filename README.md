@@ -70,3 +70,5 @@ PORT=
 ---
 
 ## Protótipo <a name="prototipo"></a>
+
+![Prototipo](/Api-blogs.gif)
