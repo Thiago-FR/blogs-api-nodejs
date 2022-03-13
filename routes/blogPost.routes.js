@@ -8,7 +8,9 @@ const router = express.Router();
 
 router.get('/:id', rescue(Controller.findOne));
 router.get('/', rescue(Controller.findAll));
-router.put('/:id', Middleware.authUser, Schemas.joiUpdatePost, rescue(Controller.updatePost));
 router.post('/', Schemas.joiCreatePost, rescue(Controller.createPost));
+router
+  .put('/:id', Middleware.validatePostUser, Schemas.joiUpdatePost, rescue(Controller.updatePost));
+router.delete('/:id', Middleware.validatePostUser, rescue(Controller.deletePost));
 
 module.exports = router;

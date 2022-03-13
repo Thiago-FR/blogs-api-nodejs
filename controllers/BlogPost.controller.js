@@ -30,6 +30,16 @@ const updatePost = async (req, res, _next) => {
   res.status(200).json({ title, content, userId: req.user.id, categories: user.categories });
 };
 
+const deletePost = async (req, res, next) => {
+  const { id } = req.params;
+
+  const post = await Service.deletePost({ id });
+
+  if (post.statusCode) return next(post);
+
+  res.status(204).end();
+};
+
 const createPost = async (req, res, next) => {
   const sequelize = new Sequelize(config.development);
   const t = await sequelize.transaction();
@@ -55,5 +65,6 @@ module.exports = {
   findAll,
   findOne,
   updatePost,
+  deletePost,
   createPost,
 };

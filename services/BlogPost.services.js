@@ -32,8 +32,29 @@ const findOne = async (id) => {
   return post;
 };
 
+const findByPk = async (id) => {
+  const post = await BlogPost.findByPk(id);
+
+  if (!post) {
+    return {
+      statusCode: {
+        code: 404,
+        message: 'Post does not exist',
+      },
+    };
+  }
+
+  return post;
+};
+
 const updatePost = async (params, id) => {
   await BlogPost.update(params, { where: id });
+};
+
+const deletePost = async (id) => {
+  const post = await BlogPost.destroy({ where: id });
+
+  return post;
 };
 
 const createPost = async (params, t) => {
@@ -45,6 +66,8 @@ const createPost = async (params, t) => {
 module.exports = {
   findAll,
   findOne,
+  findByPk,
   updatePost,
+  deletePost,
   createPost,
 };
