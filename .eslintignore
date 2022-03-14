@@ -1,4 +1,5 @@
 /tests
+**/config/
 **/migrations/
 **/seeders/
 **/models/index.js

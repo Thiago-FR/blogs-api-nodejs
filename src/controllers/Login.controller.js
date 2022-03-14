@@ -4,7 +4,7 @@ const { generateToken } = require('../middleware');
 const payloadToken = (data) => ({
   id: data.id,
   displayName: data.displayName,
-  email: data.email,    
+  email: data.email,
 });
 
 module.exports = async (req, res, next) => {
@@ -18,5 +18,5 @@ module.exports = async (req, res, next) => {
 
   const token = generateToken(congif);
 
-  res.status(200).json({ token });
+  return res.status(200).json({ token });
 };

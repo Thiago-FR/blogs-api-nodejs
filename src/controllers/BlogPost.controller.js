@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const config = require('../config/config.js');
+const config = require('../config/config');
 const Service = require('../services/BlogPost.services');
 const ServicePostCategories = require('../services/PostsCategorie.services');
 
@@ -8,13 +8,13 @@ const getSearch = async (req, res, _next) => {
 
   const post = await Service.getSearch(q);
 
-  res.status(200).json(post);
+  return res.status(200).json(post);
 };
 
 const findAll = async (_req, res, _next) => {
   const post = await Service.findAll();
-  
-  res.status(200).json(post);
+
+  return res.status(200).json(post);
 };
 
 const findOne = async (req, res, next) => {
@@ -23,8 +23,8 @@ const findOne = async (req, res, next) => {
   const user = await Service.findOne(id);
 
   if (user.statusCode) return next(user);
-  
-  res.status(200).json(user);
+
+  return res.status(200).json(user);
 };
 
 const updatePost = async (req, res, _next) => {
@@ -35,7 +35,9 @@ const updatePost = async (req, res, _next) => {
 
   const user = await Service.findOne(id);
 
-  res.status(200).json({ title, content, userId: req.user.id, categories: user.categories });
+  return res.status(200).json({
+    title, content, userId: req.user.id, categories: user.categories,
+  });
 };
 
 const deletePost = async (req, res, next) => {
@@ -45,7 +47,7 @@ const deletePost = async (req, res, next) => {
 
   if (post.statusCode) return next(post);
 
-  res.status(204).end();
+  return res.status(204).end();
 };
 
 const createPost = async (req, res, next) => {
@@ -61,12 +63,12 @@ const createPost = async (req, res, next) => {
 
     await t.commit();
 
-    res.status(201).json(categorie);
+    return res.status(201).json(categorie);
   } catch (error) {
     await t.rollback();
 
     return next({ statusCode: { code: 400, message: '"categoryIds" not found' } });
-  }  
+  }
 };
 
 module.exports = {
