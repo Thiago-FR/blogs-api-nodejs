@@ -11,6 +11,13 @@
 - [O que foi desenvolvido](#o-que-foi-desenvolvido)
 - [Conexão com o Banco](#conexao-db)
 - [Para testar o projeto](#testar-o-projeto)
+- [Endpoint's](#endpoint)
+  - [Para criar usuário POST /user](#user)
+  - [Para gerar token POST /login](#login)
+  - [Para cadastrar categoria POST /categories](#categories)
+  - [Para cadastrar post POST /post](#post)
+  - [Para editar post PUT /post/:id](#post-id)
+  - [Mais endpoints](#mais-endpoints)
 - [Protótipo](#prototipo)
 
 
@@ -67,6 +74,70 @@ PORT=
 4. Para iniciar o server.
 
 - `npm start`
+
+---
+
+## Endpoint's <a name="endpoint"></a>
+
+### Para criar usuário POST /user <a name="user"></a>
+
+```json
+{
+  "displayName": "Brett Wiltshire",
+  "email": "brett@email.com",
+  "password": "123456",
+  "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
+}
+```
+
+### Para gerar token POST /login <a name="login"></a>
+
+```json
+{
+  "email": "brett@email.com",
+  "password": "123456"
+}
+```
+
+### Para cadastrar categoria POST /categories <a name="categories"></a>
+
+```json
+ {
+   "name": "Inovação"
+ }
+```
+
+### Para cadastrar post POST /post <a name="post"></a>
+
+```json
+{
+  "title": "Latest updates, August 1st",
+  "content": "The whole text for the blog post goes here in this key",
+  "categoryIds": [1, 2]
+}
+```
+
+### Para editar post PUT /post/:id <a name="post-id"></a>
+
+```json
+{
+  "title": "Latest updates, August 1st",
+  "content": "The whole text for the blog post goes here in this key"
+}
+```
+
+### Mais endpoints <a name="mais-endpoints"></a>
+
+* **GET** /user
+* **GET** /user:id
+* **GET** /categories
+* **GET** /post
+* **GET** /post/:id
+* **GET** /post/:id
+* **DELETE** post/:id
+* **DELETE** /user/me
+* **GET** post/search?q=:*searchTerm*
+
 ---
 
 ## Protótipo <a name="prototipo"></a>
