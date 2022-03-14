@@ -52,9 +52,11 @@ Essa API utiliza as seguintes variáveis de ambiente:
 ```sh
 MYSQL_USER=
 MYSQL_PASSWORD=
-HOSTNAME=
+HOST=
 JWT_SECRET=
-PORT=
+DB_PORT=
+DATABASE=
+DIALECT=
 ```
 ---
 
@@ -79,7 +81,9 @@ PORT=
 
 ## Endpoint's <a name="endpoint"></a>
 
-### Para criar usuário POST /user <a name="user"></a>
+### Para criar usuário POST <a name="user"></a>
+
+* Endpoint: `https://project-blogs-api.herokuapp.com/user`
 
 ```json
 {
@@ -92,6 +96,8 @@ PORT=
 
 ### Para gerar token POST /login <a name="login"></a>
 
+* Endpoint: `https://project-blogs-api.herokuapp.com/login`
+
 ```json
 {
   "email": "brett@email.com",
@@ -101,6 +107,8 @@ PORT=
 
 ### Para cadastrar categoria POST /categories <a name="categories"></a>
 
+* Endpoint: `https://project-blogs-api.herokuapp.com/categories`
+
 ```json
  {
    "name": "Inovação"
@@ -108,6 +116,8 @@ PORT=
 ```
 
 ### Para cadastrar post POST /post <a name="post"></a>
+
+* Endpoint: `https://project-blogs-api.herokuapp.com/post`
 
 ```json
 {
@@ -119,6 +129,8 @@ PORT=
 
 ### Para editar post PUT /post/:id <a name="post-id"></a>
 
+* Endpoint: `https://project-blogs-api.herokuapp.com/post/:id`
+
 ```json
 {
   "title": "Latest updates, August 1st",
@@ -128,15 +140,14 @@ PORT=
 
 ### Mais endpoints <a name="mais-endpoints"></a>
 
-* **GET** /user
-* **GET** /user:id
-* **GET** /categories
-* **GET** /post
-* **GET** /post/:id
-* **GET** /post/:id
-* **DELETE** post/:id
-* **DELETE** /user/me
-* **GET** post/search?q=:*searchTerm*
+* **GET**: `https://project-blogs-api.herokuapp.com/user`
+* **GET**: `https://project-blogs-api.herokuapp.com//user:id`
+* **GET**: `https://project-blogs-api.herokuapp.com//categories`
+* **GET**: `https://project-blogs-api.herokuapp.com//post`
+* **GET**: `https://project-blogs-api.herokuapp.com/post/:id`
+* **DELETE**: `https://project-blogs-api.herokuapp.com/post/:id`
+* **DELETE**: `https://project-blogs-api.herokuapp.com/user/me`
+* **GET**: `https://project-blogs-api.herokuapp.com/post/search?q=:searchTerm`
 
 ---
 
