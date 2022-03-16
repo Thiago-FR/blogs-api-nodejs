@@ -23,7 +23,7 @@
 
 ## Habilidades desenvolvidas: <a name="habilidades"></a>
 
-Nesse projeto, você foi construido um back-end usando `ORM` com o pacote `sequelize` do `npm`, e é capaz de:
+Nesse projeto, foi construido um back-end usando `ORM` com o pacote `sequelize` do `npm`, e é capaz de:
  - Criar e associar tabelas usando `models` do `sequelize`
  - Construir endpoints para consumir os models que criar 
  - Fazer um `CRUD` com o `ORM`
